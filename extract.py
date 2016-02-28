@@ -2,11 +2,11 @@
 # Xtreme Thinblocks compression efficency
 
 #adjust path and filenames as needed
-debuglogfilename = r"/tank/bitcoin/debug.log"
+debuglogfilename = r"p:\bitcoin-full\debug.log"
 csvfilename = r"graph.csv"
 resultsfilename = r"results.txt"
 #use this to start from a certain block...
-startfromhash = ""
+startfromhash = "00000000000000000066cb8b7bbaf5eaa14f61fc146b9ef08cd23ad35ed73ec8"
 
 import re
 
@@ -41,20 +41,21 @@ with open(csvfilename, "w") as fout:
                                                              blockratio)
                     fout.write("%i, %i\n" % (blocksize, blockcomp))
 
+if blocksnum > 0:
 
-text = ""
-text += "Blocks        : %i\n" % ( blocksnum )
-text += "Tot block size: %s\n" % ( "{:,}".format(totblocksize) )
-text += "Tot XT size   : %s\n" % ( "{:,}".format(totxtsize) )
-text += "Average blocksize: %s\n" % ( "{:,}".format(totblocksize / blocksnum) )
-text += "Average XT size  : %s\n" % ( "{:,}".format(totxtsize / blocksnum) )
-text += "Ratio         : %.2f\n" % ( float(totblocksize) / totxtsize )
-text += "Compression   : %.2f%% \n" % ( (totblocksize - totxtsize) * 100.0
-                                  / totblocksize )
-print
-print text
+    text = ""
+    text += "Blocks        : %i\n" % ( blocksnum )
+    text += "Tot block size: %s\n" % ( "{:,}".format(totblocksize) )
+    text += "Tot XT size   : %s\n" % ( "{:,}".format(totxtsize) )
+    text += "Average blocksize: %s\n" % ( "{:,}".format(totblocksize / blocksnum) )
+    text += "Average XT size  : %s\n" % ( "{:,}".format(totxtsize / blocksnum) )
+    text += "Ratio         : %.2f\n" % ( float(totblocksize) / totxtsize )
+    text += "Compression   : %.2f%% \n" % ( (totblocksize - totxtsize) * 100.0
+                                      / totblocksize )
+    print
+    print text
 
-with open(resultsfilename, "w") as fout:
-    fout.write(text)
+    with open(resultsfilename, "w") as fout:
+        fout.write(text)
 
     
