@@ -41,20 +41,19 @@ with open(csvfilename, "w") as fout:
                                                              blockratio)
                     fout.write("%i, %i\n" % (blocksize, blockcomp))
 
+if blocksnum > 0:
 
-text = ""
-text += "Blocks        : %i\n" % ( blocksnum )
-text += "Tot block size: %s\n" % ( "{:,}".format(totblocksize) )
-text += "Tot XT size   : %s\n" % ( "{:,}".format(totxtsize) )
-text += "Average blocksize: %s\n" % ( "{:,}".format(totblocksize / blocksnum) )
-text += "Average XT size  : %s\n" % ( "{:,}".format(totxtsize / blocksnum) )
-text += "Ratio         : %.2f\n" % ( float(totblocksize) / totxtsize )
-text += "Compression   : %.2f%% \n" % ( (totblocksize - totxtsize) * 100.0
-                                  / totblocksize )
-print
-print text
+    text = ""
+    text += "Blocks        : %i\n" % ( blocksnum )
+    text += "Tot block size: %s\n" % ( "{:,}".format(totblocksize) )
+    text += "Tot XT size   : %s\n" % ( "{:,}".format(totxtsize) )
+    text += "Average blocksize: %s\n" % ( "{:,}".format(totblocksize / blocksnum) )
+    text += "Average XT size  : %s\n" % ( "{:,}".format(totxtsize / blocksnum) )
+    text += "Ratio         : %.2f\n" % ( float(totblocksize) / totxtsize )
+    text += "Compression   : %.2f%% \n" % ( (totblocksize - totxtsize) * 100.0
+                                      / totblocksize )
+    print
+    print text
 
-with open(resultsfilename, "w") as fout:
-    fout.write(text)
-
-    
+    with open(resultsfilename, "w") as fout:
+        fout.write(text)
