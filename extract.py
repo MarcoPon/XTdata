@@ -29,7 +29,7 @@ if windowsize > 0:
     blocksdata = blocksdata[-windowsize:]
 
 with open(csvfilename, "w") as fcsv:
-    fcsv.write('"Block Size","XT Size"\n')
+    fcsv.write('"Block Size","Xthin Size"\n')
     blocksnum = len(blocksdata)
     for block in blocksdata:                
         blocksize = block[1]
@@ -44,10 +44,10 @@ with open(csvfilename, "w") as fcsv:
 if blocksnum > 0:
     text = ""
     text += "Blocks: %i\n" % ( blocksnum )
-    text += "Tot block size   : %s\n" % ( "{:>12,}".format(totblocksize) )
-    text += "Tot XT size      : %s\n" % ( "{:>12,}".format(totxtsize) )
-    text += "Average blocksize: %s\n" % ( "{:>12,}".format(totblocksize / blocksnum) )
-    text += "Average XT size  : %s\n" % ( "{:>12,}".format(totxtsize / blocksnum) )
+    text += "Tot block size    : %s\n" % ( "{:>12,}".format(totblocksize) )
+    text += "Tot Xthin size    : %s\n" % ( "{:>12,}".format(totxtsize) )
+    text += "Average block size: %s\n" % ( "{:>12,}".format(totblocksize / blocksnum) )
+    text += "Average Xthin size: %s\n" % ( "{:>12,}".format(totxtsize / blocksnum) )
     text += "Ratio      : %.2f\n" % ( float(totblocksize) / totxtsize )
     text += "Compression: %.2f%% \n" % ( (totblocksize - totxtsize) * 100.0
                                       / totblocksize )
